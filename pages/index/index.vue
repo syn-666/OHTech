@@ -1,15 +1,12 @@
 <template>
 	<view class="content">
-		<u-button >默认按钮</u-button>
-		<u-button type="primary">主要按钮</u-button>
-		<u-button type="success">成功按钮</u-button>
-		<u-button type="info">信息按钮</u-button>
-		<u-button type="warning">警告按钮</u-button>
-		<u-button type="error">危险按钮</u-button>
+		<image class="topImg" src="cloud://onehands-8gt9feadad3b9139.6f6e-onehands-8gt9feadad3b9139-1306243526/UI/home/top.jpeg" mode="widthFix"></image>
+		<button type="default" @click="getUserInfo()">登录</button>
 	</view>
 </template>
 
 <script>
+	import {getUserInfo} from '../../utils/wxUtil.js';
 	const db = wx.cloud.database()
 	export default {
 		data() {
@@ -18,17 +15,18 @@
 			}
 		},
 		onLoad() {
-			db.collection('test').doc('28ee4e3e60e1806f279de3f82108dc79').get()
-			.then(res=>{
-				console.log(res)
-			})
+			
 		},
 		methods: {
-
+			getUserInfo(){
+				getUserInfo()
+			}
 		}
 	}
 </script>
 
 <style lang="scss">
-	
+	.topImg{
+		width: 100vw;
+	}
 </style>

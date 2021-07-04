@@ -25,7 +25,32 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.topImg {
-  width: 100vw;
+.content {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  height: 100vh;
+}
+.content .logo {
+  margin-top: -500rpx;
+  width: 200rpx;
+}
+.content .login {
+  margin: 100rpx 0 0 0;
+  width: 65vw;
+}
+.content .phone {
+  margin: 20rpx 0;
+  width: 65vw;
 }
 
