@@ -1,0 +1,1 @@
+<view class="content"><image class="topImg" src="cloud://onehands-8gt9feadad3b9139.6f6e-onehands-8gt9feadad3b9139-1306243526/UI/home/top.jpeg" mode="widthFix"></image><button type="default" data-event-opts="{{[['tap',[['getUserInfo']]]]}}" bindtap="__e">登录</button></view>
