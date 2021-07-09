@@ -25,62 +25,58 @@
 /* 垂直间距 */
 /* 透明度 */
 /* 文章场景相关 */
-.topImg {
-  width: 100vw;
+.top {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  font-weight: bold;
+  margin: 20rpx;
 }
-.top_btn {
+.top .pop_avatar {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
           justify-content: center;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  overflow: hidden;
+  margin: 20rpx;
 }
-.top_btn image {
-  width: 90vw;
+.top .pop_nickName {
+  margin: 20rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
 }
-.bottom_btn {
+.pop_login {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
           justify-content: center;
-  margin-top: 30rpx;
+  margin-top: 20rpx;
 }
-.bottom_btn .leftImg {
-  width: 42.5vw;
-  margin-right: 2.5vw;
-}
-.bottom_btn .rightImg {
-  width: 42.5vw;
-  margin-left: 2.5vw;
-}
-.ad_img {
+.pop_login .btn {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
           justify-content: center;
-  margin-top: 30rpx;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  background-color: #4CD964;
+  border-radius: 20rpx;
+  width: 400rpx;
+  height: 80rpx;
+  color: #FFFFFF;
 }
-.ad_img image {
-  width: 90vw;
-}
-.step_img {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-          justify-content: center;
-  margin-top: 30rpx;
-}
-.step_img image {
-  width: 90vw;
-}
-.content {
-  padding-bottom: 50rpx;
+u-popup {
+  overflow-y: scroll;
 }
 

@@ -10593,7 +10593,50 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 43 */,
 /* 44 */,
 /* 45 */,
-/* 46 */,
+/* 46 */
+/*!****************************************************************!*\
+  !*** /Users/shitadashikusunoki/Desktop/uni/OH/utils/wxUtil.js ***!
+  \****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.showToast = exports.getUserInfo = void 0;var getUserInfo = function getUserInfo(res) {
+  uni.showLoading({
+    title: '授权中',
+    mask: true });
+
+  return new Promise(function (resolve, reject) {
+    uni.getUserProfile({
+      desc: '获取用户基本信息',
+      success: function success(res) {
+        showToast('授权成功', 'success');
+        resolve(res);
+      },
+      fail: function fail(err) {
+        showToast('授权失败,请重试', 'none');
+        reject(err);
+      },
+      complete: function complete() {
+        uni.hideLoading();
+      } });
+
+  });
+};exports.getUserInfo = getUserInfo;
+
+var showToast = function showToast(title, icon) {
+  return new Promise(function (resolve, reject) {
+    uni.showToast({
+      title: title,
+      icon: icon,
+      duration: 2000,
+      mask: true });
+
+  });
+};exports.showToast = showToast;
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
 /* 47 */,
 /* 48 */,
 /* 49 */,
@@ -10621,28 +10664,87 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 /* 71 */,
 /* 72 */,
 /* 73 */,
-/* 74 */
-/*!****************************************************************!*\
-  !*** /Users/shitadashikusunoki/Desktop/uni/OH/utils/wxUtil.js ***!
-  \****************************************************************/
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
+/* 92 */,
+/* 93 */,
+/* 94 */,
+/* 95 */,
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */,
+/* 100 */,
+/* 101 */,
+/* 102 */,
+/* 103 */,
+/* 104 */,
+/* 105 */
+/*!*****************************************************************!*\
+  !*** /Users/shitadashikusunoki/Desktop/uni/OH/utils/userApi.js ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.getUserInfo = void 0;var getUserInfo = function getUserInfo(res) {
-  return new Promise(function (resolve, reject) {
-    uni.getUserProfile({
-      desc: '获取用户基本信息',
-      success: function success(res) {
-        resolve(res);
-      },
-      fail: function fail(err) {
-        reject(err);
-      } });
+Object.defineProperty(exports, "__esModule", { value: true });exports.deleteUser = exports.select = exports.insert = void 0;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var db = wx.cloud.database();
+var col = db.collection('customer');
 
+var insert = function insert(param) {
+  return new Promise(function (resolve, reject) {
+    col.add({
+      data: _objectSpread({},
+      param) }).
+
+    then(function (res) {
+      resolve(res);
+    }).catch(function (err) {
+      reject(err);
+    });
   });
-};exports.getUserInfo = getUserInfo;
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+};exports.insert = insert;
+
+var select = function select(param) {
+  return new Promise(function (resolve, reject) {
+    col.where(_objectSpread({},
+    param)).
+    get().
+    then(function (res) {
+      resolve(res);
+    }).catch(function (err) {
+      reject(err);
+    });
+  });
+};exports.select = select;
+
+var deleteUser = function deleteUser(param) {
+  return new Promise(function (resolve, reject) {
+    col.where(_objectSpread({},
+    param)).
+    remove().
+    then(function (res) {
+      resolve(res);
+    }).catch(function (err) {
+      reject(err);
+    });
+  });
+};exports.deleteUser = deleteUser;
 
 /***/ })
 ]]);
