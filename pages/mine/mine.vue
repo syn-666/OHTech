@@ -27,6 +27,7 @@
 				isLogin:false,
 				userInfo:{},
 				user_id:null,
+				_openid:null
 			}
 		},
 		onLoad(options){
@@ -54,6 +55,7 @@
 						self.isLogin = true;
 						//存入属性到userinfo
 						self.userInfo = {}
+						self.userInfo['_openid'] = self._openid
 						self.userInfo['customer_id'] = id;
 						self.userInfo['nickName'] = res.userInfo.nickName
 						self.userInfo['avatarUrl'] = res.userInfo.avatarUrl
@@ -74,7 +76,7 @@
 			//判断用户是否第一次进入小程序(可能存在换手机情况.所以判断了缓存还要判断数据库)
 			selectUser(){
 				let self = this;
-				let _openid = null;
+				// let _openid = null;
 				//先搜索缓存中数据有无userInfo
 				this.userInfo = uni.getStorageSync('userInfo')
 				//没有则从数据库中搜索
@@ -82,9 +84,9 @@
 					wx.cloud.callFunction({
 						name: 'getOpenId'
 					}).then((res)=>{
-						_openid = res.result.openid;
+						self._openid = res.result.openid;
 						select({
-							_openid: _openid
+							_openid: self._openid
 						}).then((res)=>{
 							//返回用户信息赋值给userInfo
 							this.userInfo = res.data[0]

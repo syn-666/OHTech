@@ -181,7 +181,8 @@ var _userApi = __webpack_require__(/*! ../../utils/userApi.js */ 75);function _i
       show: true,
       isLogin: false,
       userInfo: {},
-      user_id: null };
+      user_id: null,
+      _openid: null };
 
   },
   onLoad: function onLoad(options) {
@@ -209,6 +210,7 @@ var _userApi = __webpack_require__(/*! ../../utils/userApi.js */ 75);function _i
                     self.isLogin = true;
                     //存入属性到userinfo
                     self.userInfo = {};
+                    self.userInfo['_openid'] = self._openid;
                     self.userInfo['customer_id'] = id;
                     self.userInfo['nickName'] = res.userInfo.nickName;
                     self.userInfo['avatarUrl'] = res.userInfo.avatarUrl;
@@ -229,7 +231,7 @@ var _userApi = __webpack_require__(/*! ../../utils/userApi.js */ 75);function _i
     //判断用户是否第一次进入小程序(可能存在换手机情况.所以判断了缓存还要判断数据库)
     selectUser: function selectUser() {var _this2 = this;
       var self = this;
-      var _openid = null;
+      // let _openid = null;
       //先搜索缓存中数据有无userInfo
       this.userInfo = uni.getStorageSync('userInfo');
       //没有则从数据库中搜索
@@ -237,9 +239,9 @@ var _userApi = __webpack_require__(/*! ../../utils/userApi.js */ 75);function _i
         wx.cloud.callFunction({
           name: 'getOpenId' }).
         then(function (res) {
-          _openid = res.result.openid;
+          self._openid = res.result.openid;
           (0, _userApi.select)({
-            _openid: _openid }).
+            _openid: self._openid }).
           then(function (res) {
             //返回用户信息赋值给userInfo
             _this2.userInfo = res.data[0];
